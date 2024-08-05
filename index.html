@@ -11,9 +11,9 @@
     </style>
   </head>
   <body class="flex flex-col min-h-screen bg-slate-200 box-border m-0 p-0">
-    <modal id="modal" class="fixed top-0 bottom-0 left-0 right-0 bg-black/65 z-50 hidden">
+    <modal id="modal" class="fixed top-0 bottom-0 left-0 right-0 bg-black/65 bg-blur z-50 hidden">
         <div class="flex w-full h-full flex-col justify-center items-center">
-            <form class="relative bg-green-300/50 rounded-2xl md:w-[24rem] md:h-[16rem] flex flex-col items-center p-4 gap-4">
+            <form id="loginForm" class="relative bg-green-300/90 rounded-2xl md:w-[24rem] md:h-[16rem] flex flex-col items-center p-4 gap-4">
                 <div class="absolute top-4 right-4">
                     <i onclick="hideModal()" class="fa-solid fa-x cursor-pointer hover:text-red-700 transition-colors duration-150"></i>
                 </div>
@@ -29,6 +29,7 @@
     >
       <h1 class="text-green-400 text-2xl md:text-4xl font-extrabold">Clover</h1>
       <span class="text-gray-400 text-sm md:text-base">Core training Laravel REST API + OAuth</span>
+      <span id="authMsg">Hello Guest</span>
       <div class="fixed top-4 md:top-6 left-4 md:left-12 z-10">
         <div
           class="cursor-pointer rounded-[50%] w-10 h-10 bg-green-400 hover:bg-green-600 transition-all ease-linear duration-150 flex items-center justify-center p-1 text-gray-200 hover:text-white relative group"
