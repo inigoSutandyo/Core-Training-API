@@ -4,9 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clover Web</title>
+    <style>
+        * {
+            margin: 0;
+        }
+    </style>
   </head>
-  <body class="flex flex-col min-h-screen w-screen bg-slate-200 box-border m-0 p-0">
-    <modal id="modal" class="fixed top-0 bottom-0 left-0 right-0 bg-black/65 z-10 hidden">
+  <body class="flex flex-col min-h-screen bg-slate-200 box-border m-0 p-0">
+    <modal id="modal" class="fixed top-0 bottom-0 left-0 right-0 bg-black/65 z-50 hidden">
         <div class="flex w-full h-full flex-col justify-center items-center">
             <form class="relative bg-green-300/50 rounded-2xl md:w-[24rem] md:h-[16rem] flex flex-col items-center p-4 gap-4">
                 <div class="absolute top-4 right-4">
@@ -20,11 +25,11 @@
         </div>
     </modal>
     <header
-      class="h-20 pt-12 py-2 flex flex-col justify-center items-center w-full gap-2"
+      class="pt-6 py-2 flex flex-col justify-center items-center w-full gap-2"
     >
       <h1 class="text-green-400 text-2xl md:text-4xl font-extrabold">Clover</h1>
       <span class="text-gray-400 text-sm md:text-base">Core training Laravel REST API + OAuth</span>
-      <div class="fixed top-6 left-12">
+      <div class="fixed top-4 md:top-6 left-4 md:left-12 z-10">
         <div
           class="cursor-pointer rounded-[50%] w-10 h-10 bg-green-400 hover:bg-green-600 transition-all ease-linear duration-150 flex items-center justify-center p-1 text-gray-200 hover:text-white relative group"
         >
@@ -33,23 +38,58 @@
             class="absolute m-1 opacity-0 top-10 -left-40 bg-green-400 min-w-12 min-h-10 rounded-xl group-hover:opacity-100 group-hover:translate-x-40 transition-all ease-linear duration-200 p-2 flex flex-col gap-2"
           >
             <li class="text-green-700 hover:text-white transition-colors ease-linear duration-150">
-                <a href="">Main</a>
-            </li>
-            <li class="text-green-700 hover:text-white transition-colors ease-linear duration-150">
                 <a onclick="showModal()">Login</a>
             </li>
             <li class="text-green-700 hover:text-white transition-colors ease-linear duration-150">
-                <a href="">Somewhere</a>
+                <a href="#communities">Community</a>
             </li>
             <li class="text-green-700 hover:text-white transition-colors ease-linear duration-150">
-                <a href="">Somewhere</a>
+                <a href="#posts">Posts</a>
             </li>
         </ul>
         </div>
       </div>
     </header>
-    <main class="flex-1 py-4 px-6 w-full">
-
+    <main class="flex-1 py-4 px-6 w-full flex flex-col gap-8">
+        <section id="communities" class="flex flex-col w-full items-center gap-4">
+            <h2 class="text-2xl font-semibold">Communities</h2>
+            <form id="communitySearch" class="w-full flex justify-center">
+                <div class="relative w-full md:w-[32rem] flex items-center">
+                    <button class="absolute left-4" type="submit">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input type="text" name="communitySearch" id="communitySearch" class="w-full rounded-3xl ps-10 pe-4 py-2 focus:outline-none">
+                </div>
+            </form>
+            <div id="communityGrid" class="w-full grid grid-cols-4 gap-x-2 gap-y-3 max-h-[36rem] overflow-y-auto p-2">
+            </div>
+        </section>
+        <section id="posts" class="flex flex-col w-full items-center gap-4" >
+            <h2 class="text-2xl font-semibold">Posts</h2>
+            <div id="postContainer" class="w-full flex flex-col gap-2">
+                <div class="w-full bg-white rounded-xl shadow-md overflow-hidden flex flex-col cursor-pointer">
+                    <div class="flex w-full justify-between items-center px-4 py-2 ">
+                        <div>
+                            <span class="text-lg font-bold text-start">
+                                Post A
+                            </span>
+                            <span class="text-sm font-semibold"> - User A</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400">07 Jan, 2024</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 truncate px-4 pb-2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, recusandae id? Laboriosam molestiae praesentium, quis placeat, nihil sint perferendis veritatis optio, voluptatem tenetur est voluptas ut! Nemo laboriosam aspernatur nisi!
+                    </p>
+                </div>
+            </div>
+            <div id="pagination" class="w-full flex flex-row justify-center gap-4 items-center">
+                <button id="prevPage" class="transition-all ease-linear duration-150 bg-red-500 px-4 py-2 rounded-lg text-white hover:bg-red-500/75">Prev</button>
+                <span id="page">1 / 10</span>
+                <button id="nextPage" class="transition-all ease-linear duration-150 bg-green-500 px-4 py-2 rounded-lg text-white hover:bg-green-500/75">Next</button>
+            </div>
+        </section>
     </main>
   </body>
   <script src="./jquery.js"></script>
